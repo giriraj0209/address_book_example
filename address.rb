@@ -8,7 +8,7 @@ when 'long'
 	address += street_1+ "\n"
 	address +=street_2+"\n" if !street_2.nil?
 	address += "#{city}, #{state} - #{postal_code}"
-	puts address
+	#puts address
 when 'short'
 	address += "#{kind}: "
 	address += street_1
