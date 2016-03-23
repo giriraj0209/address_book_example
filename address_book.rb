@@ -8,6 +8,39 @@ def initialize
 	@contacts =[]
 end
 
+def run
+loop do
+puts "Address Book"
+puts "a: Add Contact"
+puts "p: Print Contact List"
+puts "e: Exit"
+puts "Please Enter your input"
+input = gets.chomp.downcase
+	case input
+	when 'a'
+		add_contact
+	when 'p'
+		print_contact_list
+	when 'e'
+		break  
+	end
+end
+end
+
+def add_contact
+contact =Contact.new
+print "First Name: "
+contact.first_name = gets.chomp
+
+print "Middle Name: "
+contact.middle_name = gets.chomp
+
+print "Last Name: "
+contact.last_name = gets.chomp
+
+contacts.push(contact)
+end
+
 def find_by_name(name)
 	results=[]
 	search =name.downcase
@@ -44,7 +77,7 @@ end
 end
 def print_contact_list
 	contacts.each do |contact|
-		puts contact.to_s('first_last')
+		puts contact.to_s('full_name')
 	end
 end
 def find_by_address(query)
@@ -59,19 +92,8 @@ search = query.downcase
 end
 print_results("address Search Results (#{search})", results)
 end
+
 addressbook =AddressBook.new
+addressbook.run
 
-giri=Contact.new
-giri.first_name="Giriraj"
-giri.last_name="Nagaraju"
-giri.middle_name="Kashyap"
-giri.add_phone_numbers("Home", "123-445-8686")
-giri.add_phone_numbers("Public", "123-333-4444")
-giri.add_addresses("Home", "street1", "street2","somewhere","somestate","123456")
-
-addressbook.contacts.push(giri)
-#addressbook.print_contact_list
-#addressbook.find_by_name('g')
-#addressbook.find_by_phone_number('123')
-addressbook.find_by_address("street1")
 end
