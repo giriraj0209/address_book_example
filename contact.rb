@@ -1,6 +1,33 @@
+require './phone_number'
+require './address'
+
 class Contact
 
 attr_writer :first_name, :middle_name, :last_name
+attr_reader :phone_numbers, :addresses
+
+def initialize
+@phone_numbers = []
+@addresses =[]
+end
+
+def add_phone_numbers(kind, number)
+	phone_number = Phone_number.new
+	phone_number.kind= kind
+	phone_number.number= number
+	phone_numbers.push(phone_number)
+end 
+
+def add_addresses(kind, street_1, street_2, city, state, postal_code)
+address = Address.new
+address.kind = kind
+address.street_1=street_1
+address.street_2= street_2
+address.city =city
+address.state =state
+address.postal_code=postal_code
+addresses.push(address)
+end
 
 def first_name
 @first_name
@@ -52,16 +79,16 @@ else
 	first_last
 end
 end
+def print_phone_numbers
+puts "Phone Numbers"
+phone_numbers.each{|phone_number| puts phone_number}
+end
+def print_addresses
+puts "Address"
+addresses.each{|address| puts address}
+end
 
-giri=Contact.new
-giri.first_name="Giriraj"
-giri.last_name="Nagaraju"
-giri.middle_name="Kashyap"
-puts giri.to_s('something')
-puts giri.last_first
-mark=Contact.new
-mark.first_name="marky"
-mark.last_name="louie"
-puts mark.full_name
-puts mark.last_first
+#puts giri.last_first
+#giri.print_phone_numbers 
+#giri.print_addresses
 end
